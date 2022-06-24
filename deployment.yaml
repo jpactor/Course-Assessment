@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jpsaapp01
+spec:
+  selector:
+    matchLabels:
+      app: jpsaapp01
+  template:
+    metadata:
+      labels:
+        app: jpsaapp01
+    spec:
+      containers:
+      - name: jpsaapp01
+        image: sbacr02.azurecr.io/jpsaapp01:latest
+        resources: 
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
